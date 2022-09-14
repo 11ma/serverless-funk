@@ -1,10 +1,13 @@
 const getRandomDadJoke = async () => {
-	const url = "https://icanhazdadjoke.com/"
-	const jokeStream = await fetch(url, {
-		headers: {
-			Accept: "application/json",
-		},
-	})
+	// const url = "https://icanhazdadjoke.com/"
+	// const jokeStream = await fetch(url, {
+	// 	headers: {
+	// 		Accept: "application/json",
+	// 	},
+	// })
+	const url = "/.netlify/functions/jokes"
+	const jokeStream = await fetch(url)
+	// console.log(jokeStream)
 	const result = await jokeStream.json()
 	const joke = result.joke
 	return joke
@@ -23,4 +26,4 @@ const refreshJoke = async () => {
 // load the first joke
 refreshJoke()
 
-setInterval(refreshJoke, 10000)
+setInterval(refreshJoke, 8500)
